@@ -258,6 +258,11 @@ results = store.hybrid_search_with_score(
 
 See the full [Hybrid Search](samples/hybrid_search.ipynb) tutorial.
 
+## Related Projects
+
+- [langchain-bigquery-graph](https://github.com/ksmin23/langchain-bigquery-graph) -- Standalone `GraphStore` and Graph RAG retrievers for BigQuery (the upstream of this package's graph features)
+- [langchain-bigquery-hybridsearch](https://github.com/ksmin23/langchain-bigquery-hybridsearch) -- Standalone hybrid (vector + full-text) search vector store for BigQuery (the upstream of this package's hybrid search feature)
+
 ## License
 
 MIT License. See [LICENSE](LICENSE) for details.
