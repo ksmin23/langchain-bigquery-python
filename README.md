@@ -260,8 +260,15 @@ See the full [Hybrid Search](samples/hybrid_search.ipynb) tutorial.
 
 ## Related Projects
 
+### Upstream Libraries
+
 - [langchain-bigquery-graph](https://github.com/ksmin23/langchain-bigquery-graph) -- Standalone `GraphStore` and Graph RAG retrievers for BigQuery (the upstream of this package's graph features)
 - [langchain-bigquery-hybridsearch](https://github.com/ksmin23/langchain-bigquery-hybridsearch) -- Standalone hybrid (vector + full-text) search vector store for BigQuery (the upstream of this package's hybrid search feature)
+
+### Sample Applications
+
+- [graph-rag-with-bigquery](https://github.com/ksmin23/my-adk-python-samples/tree/main/Graph-RAG/graph-rag-with-bigquery) -- Sample Agentic Graph RAG built with the Agent Development Kit (ADK), using BigQuery property graphs and this package's graph retrievers
+- [rag-with-bigquery-hybridsearch](https://github.com/ksmin23/my-adk-python-samples/tree/main/RAG/rag-with-bigquery-hybridsearch) -- Sample Agentic RAG built with the Agent Development Kit (ADK), using this package's `BigQueryHybridSearchVectorStore` with Reciprocal Rank Fusion (RRF) to combine `VECTOR_SEARCH()` and `SEARCH()`
 
 ## License
 
