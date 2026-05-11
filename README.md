@@ -6,6 +6,34 @@
 - [Client Library Documentation](docs/)
 - [Product Documentation](https://cloud.google.com/bigquery)
 
+## Overview
+
+`langchain-bigquery` is a [LangChain](https://github.com/langchain-ai/langchain) integration package for [Google Cloud BigQuery](https://cloud.google.com/bigquery). It enables you to build retrieval-augmented generation (RAG) and graph-based AI applications directly on top of BigQuery, leveraging its serverless scale, native vector search, full-text search, and property graph capabilities — without managing a separate vector database or graph database.
+
+> [!IMPORTANT]
+> **What this package adds beyond [`langchain-google-community`](https://pypi.org/project/langchain-google-community/)**
+>
+> The official [`langchain-google-community[featurestore]`](https://pypi.org/project/langchain-google-community/) package ships only the basic `BigQueryVectorStore` (vector search via BigQuery Feature Store). It does **not** provide property-graph storage, Graph RAG retrievers, or hybrid (vector + full-text) search.
+>
+> `langchain-bigquery` fills that gap by adding:
+> - **Property Graph support** — `BigQueryGraphStore` and Graph RAG retrievers (`BigQueryGraphVectorContextRetriever`, `BigQueryGraphTextToGQLRetriever`) built on BigQuery's native [property graph](https://cloud.google.com/bigquery/docs/reference/standard-sql/graph-intro) and [GQL](https://cloud.google.com/bigquery/docs/reference/standard-sql/graph-intro) features.
+> - **Hybrid Search** — `BigQueryHybridSearchVectorStore`, which combines `VECTOR_SEARCH()` and `SEARCH()` (with Reciprocal Rank Fusion) in a single retrieval step.
+>
+> Use this package when you need graph-aware retrieval or hybrid keyword + semantic search on BigQuery — capabilities not available in `langchain-google-community`.
+
+### Features
+
+- **`BigQueryGraphStore`** — Store and query property graphs in BigQuery using the [GQL (Graph Query Language)](https://cloud.google.com/bigquery/docs/reference/standard-sql/graph-intro) standard. Automatically manages node/edge tables and the underlying property graph schema.
+- **`BigQueryGraphVectorContextRetriever`** — Perform vector similarity search over graph nodes with optional multi-hop neighborhood expansion, returning rich graph context for RAG.
+- **`BigQueryGraphTextToGQLRetriever`** — Translate natural language questions into GQL queries with an LLM, with optional few-shot examples for improved accuracy.
+- **`BigQueryHybridSearchVectorStore`** — Combine BigQuery's `VECTOR_SEARCH()` (semantic similarity) and `SEARCH()` (full-text keyword matching) into a single hybrid retrieval step, with both pre-filter and Reciprocal Rank Fusion (RRF) modes.
+
+### When to Use
+
+- You already store your data in BigQuery and want to add semantic, hybrid, or graph-based retrieval without exporting it.
+- You need a serverless, fully managed backend for vector and graph workloads at BigQuery scale.
+- You are building Agentic RAG or Graph RAG applications (e.g., with the [Agent Development Kit (ADK)](https://github.com/google/adk-python)) and want a single source of truth in BigQuery.
+
 ## Quick Start
 
 In order to use this library, you first need to go through the following steps:
